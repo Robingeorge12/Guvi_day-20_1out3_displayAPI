@@ -3,7 +3,7 @@
 const mainFunction = async () => {
     // https://cat-fact.herokuapp.com/facts 5 list
     // quotes, today, author, random
-  let collect = await fetch(`https://zenquotes.io/api/random`);
+  let collect = await fetch(`https://cat-fact.herokuapp.com/facts`);
   let data = await collect.json();
   // console.log(data);
   return data;
@@ -18,21 +18,21 @@ const display = async () => {
 display();
 
 const append = async (data)=>{
-  // document.querySelector("#container").innerHTML = ""
+  document.querySelector("#container").innerHTML = ""
     console.log(data)
 
     
     data?.forEach((el,i)=>{
         
 let box = document.createElement("div")
-box.setAttribute("class","card text-white bg-dark main")
+box.setAttribute("class","card text-white col-lg-4 col-md-6 bg-primary mb-2 col-sm-12 main")
 // 
 let hd = document.createElement("div")
 hd.setAttribute("class","card-header")
-hd.innerText = el.a
+hd.innerText ="TYPE"+" "+ el.type
 
 let cb = document.createElement("div")
-cb.setAttribute("class","card-body")
+cb.setAttribute("class","card-body cdb")
 
 
 
@@ -41,12 +41,12 @@ h5.setAttribute(
   "class",
   "card-title align-items-start justify-content-center"
 );
-h5.textContent ="QUOTES >"+" "+ el.q ;
+h5.textContent = el.text ;
 
 
 let p = document.createElement("p");
-cb.setAttribute("class","card-text")
-p.textContent = el.h;
+p.setAttribute("class","card-text")
+p.textContent ="ID"+" "+ el.user;
 
 
 box.append(hd,cb)
